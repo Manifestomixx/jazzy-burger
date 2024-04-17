@@ -15,8 +15,8 @@ const Navbar = () => {
   const [cartShow, setCartShow] = useState(false)
   return (
     <>
-      <main>
-        <nav className="container d-flex justify-content-between align-items-center ">
+      <main className="container">
+        <nav className=" d-flex justify-content-between align-items-center ">
           <section className="d-flex justify-content-between align-items-center gap-3 ">
             {/* section one */}
             <div>
@@ -68,6 +68,9 @@ const Navbar = () => {
 
             {/* function for bag */}
             <div className="d-flex  align-items-center position-relative" role="button" onClick={()=> !cartShow ? setCartShow(true) : setCartShow(false)}>
+              <div className="">
+                <p className="position-absolute top-0 start-100 bg-danger translate-middle rounded-circle text-light fw-bold text-center px-1  ">10 </p>
+              </div>
               <img src={cartlogo} alt="cart-logo" />
             </div>
             <div className=" position-absolute ">{cartShow && <Bag/>}</div>

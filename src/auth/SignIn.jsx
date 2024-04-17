@@ -6,10 +6,11 @@ import { Link } from 'react-router-dom';
 const Signin = () => {
   return (
     <>
-    <main>
-      <section className='container bg-white h-100  w-md-50'>
+    <main className='container'>
+      <section className=' bg-white h-100  w-md-50'>
 
       <div className='d-flex flex-column align-items-center my-5 '>
+        
         <img src={jazzylogo} alt="jazzy-logo" className='w-25 my-5' />
         <h2 className='w-75 text-center '><b> SIGN IN TO YOUR ACCOUNT</b> </h2>
       </div>

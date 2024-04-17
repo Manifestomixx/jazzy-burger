@@ -17,7 +17,7 @@ const Bag = () => {
         <h5>N Subtotal</h5>
         </div>
         <hr />
-        <button className="btn btn-success w-100">Proceed to Checkout</button>
+        <button className="btn btn-success mb-3 w-100">Proceed to Checkout</button>
     </main>
     </>
   )
