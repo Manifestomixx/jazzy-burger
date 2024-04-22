@@ -1,0 +1,21 @@
+.app{
+    width: 250px;
+}
+
+@media(max-width: 496px){
+    .appflex{
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .footertop{
+        display: flex;
+        flex-direction: column-reverse;
+
+    }
+    .footerflex{
+        display: flex;
+        flex-direction: column;
+    }
+
+}

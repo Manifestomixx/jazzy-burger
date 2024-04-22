@@ -10,7 +10,7 @@ import { GoChevronUp } from "react-icons/go";
 import { GoChevronDown } from "react-icons/go";
 import Bag from "../components/Bag";
 
-const Navbar = () => {
+const Navbar = ({cartItem}) => {
   const [authShow, setAuthShow] = useState(false);
   const [cartShow, setCartShow] = useState(false)
   return (
@@ -69,7 +69,7 @@ const Navbar = () => {
             {/* function for bag */}
             <div className="d-flex  align-items-center position-relative" role="button" onClick={()=> !cartShow ? setCartShow(true) : setCartShow(false)}>
               <div className="">
-                <p className="position-absolute top-0 start-100 bg-danger translate-middle rounded-circle text-light fw-bold text-center px-1  ">10 </p>
+                <p className="position-absolute top-0 start-100 bg-danger translate-middle rounded-circle text-light fw-bold text-center px-1  ">{cartItem.length}</p>
               </div>
               <img src={cartlogo} alt="cart-logo" />
             </div>

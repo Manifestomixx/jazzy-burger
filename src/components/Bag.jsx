@@ -1,5 +1,6 @@
 import React from 'react';
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { Link } from 'react-router-dom';
 
 const Bag = () => {
   return (
@@ -17,7 +18,10 @@ const Bag = () => {
         <h5>N Subtotal</h5>
         </div>
         <hr />
+        <Link to={"/CheckOut"}>
+        
         <button className="btn btn-success mb-3 w-100">Proceed to Checkout</button>
+        </Link>
     </main>
     </>
   )

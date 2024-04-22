@@ -2,3 +2,9 @@ input.larger{
     width: 20px;
     height: 20px;
 }
+
+/* @media (min-width: 769){
+    .media{
+        width: 50%;
+    }
+} */

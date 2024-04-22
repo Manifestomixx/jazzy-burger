@@ -11,7 +11,7 @@ const SignUp = () => {
   return (
     <>
     <main>
-      <section className='container bg-white my-5  w-md-50'>
+      <section className='container bg-white my-5 '>
 
       <div className='d-flex flex-column align-items-center my-5 '>
         <img src={jazzylogo} alt="jazzy-logo" className='w-md-25 my-5' />

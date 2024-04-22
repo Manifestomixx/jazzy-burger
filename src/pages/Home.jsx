@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 import Hero from '../components/Hero'
+import Product from '../components/Product'
+
 
 const Home = () => {
     useEffect(()=>{
@@ -9,6 +11,8 @@ const Home = () => {
     <>
     <main className='container '>
         <Hero/>
+        <Product/>
+       
     </main>
     
     </>

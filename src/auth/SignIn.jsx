@@ -1,63 +1,98 @@
-import React from 'react';
-import jazzylogo from '../assets/jazzylogo.svg';
-import '../styles/SignIn.css'
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import jazzylogo from "../assets/jazzylogo.svg";
+import "../styles/SignIn.css";
+import { Link } from "react-router-dom";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+import { FaRegEye } from "react-icons/fa";
+import { FaRegEyeSlash } from "react-icons/fa";
+
+import Form from "react-bootstrap/Form";
+import { useForm } from "react-hook-form";
 
 const Signin = () => {
+  const [isReveal, setIsReveal] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm()
+
+  const onSubmit = (data) => console.log(data)
+
+  function handleToggle (){
+    !isReveal ? setIsReveal(true) : setIsReveal(false)
+  }
+  useEffect(() => {
+    document.title = "Login | Page";
+  });
   return (
     <>
-    <main className='container'>
-      <section className=' bg-white h-100  w-md-50'>
-
-      <div className='d-flex flex-column align-items-center my-5 '>
-        
-        <img src={jazzylogo} alt="jazzy-logo" className='w-25 my-5' />
-        <h2 className='w-75 text-center '><b> SIGN IN TO YOUR ACCOUNT</b> </h2>
-      </div>
-      <div>
-        <form className=''>
-          <div className='d-flex flex-column text-secondary mt-5 gap-3'>
-            {/* email */}
-          <label htmlFor="email">Email</label>
-          <input type="email" placeholder='example@mail.com' id='email' className='p-2 border-1 rounded' />
-
-          {/* password */}
-          <label htmlFor="password">Password</label>
-          <input type="password" placeholder='Password' id='password' className='p-2 border-1 rounded ' />
-          </div>
-          <div>
-          </div>
-          <div className='d-md-flex justify-content-between align-items-center'>
-            <div className='d-flex gap-2 my-3  align-items-center'>
-            <input type="checkbox" className='larger' />
-            <h5 className='mt-2'>keep me signed in</h5>
-            </div>
-
-            <div className='d-none d-md-block'>
-              <h5 className='text-primary'> 
-              <Link className='text-decoration-none'>
-              Reset Password
-              </Link> 
-              </h5>
-            </div>
-          </div>
-            <button className='btn btn-danger w-100'>Sign In</button>
-            <h4 className='my-3'>Dont have an account? <Link to={"../SignUp"} className='text-decoration-none'>
-            
-             <span className='text-primary'>Create one</span>
+      <main className="container vh-50 d-flex flex-column my-3">
+        <div className="">
+          <div className="text-center">
+            <Link to="/">
+              <img src={jazzylogo} alt="Jazzy-Logo" />
             </Link>
-             </h4>
-          
+          </div>
+          <h2 className="fs-3 fw-bold my-4 text-center w-75 m-auto">
+            SIGN IN TO YOUR ACCOUNT
+          </h2>
 
+          {/* FORM */}
+          <Form className="w-75 m-auto" onSubmit={handleSubmit(onSubmit)}>
+            {/* input for email */}
+            <Form.Label className="fs-6 text-secondary"> Email </Form.Label>
+            {/* <FloatingLabel
+              controlId="floatingInput"
+              label="example@mail.com"
+              className="mb-3"
+            >
+            </FloatingLabel> */}
+              <Form.Control
+                type="email"
+                placeholder="name@example.com"
+                className="border border-3 rounded-3"
+                {...register("email",{ required: true })}
+                />
+                {errors.email && <span className="text-danger fw-bold">This field is required</span>}
 
+            {/* input for password */}
+            <Form.Label className="fs-6 text-secondary"> Password </Form.Label>
+            <FloatingLabel controlId="floatingPassword" label="Password">
 
-        </form>
-      </div>
-      </section>
-    </main>
-    
+              <Form.Control
+                type={isReveal ? "text" : "password"}
+                placeholder="Password"
+                className="border border-3 rounded-3 position-relative"
+                {...register("password",{ required: true })}
+              />
+              {errors.password && <span className="text-danger fw-bold">This field is required</span>}
+              <p className="position-absolute end-0 top-0 mt-3 me-2" role="button" onClick={handleToggle}>{isReveal ? <FaRegEyeSlash /> : <FaRegEye />} </p>
+            </FloatingLabel>
+
+            {/* below for check box */}
+            <div className="d-flex justify-content-between mt-3 fw-bold">
+            {['checkbox',].map((type) => (
+        <div key={`default-${type}`} className="mb-3">
+          <Form.Check // prettier-ignore
+            type={type}
+            id={`default-${type}`}
+            label={"keep me signed in"}
+            className="fs-6 fw-bold"
+          />
+        </div>
+      ))}
+      <Link to='#' className="text-decoration-none">Reset Password</Link>
+
+            </div>
+            <button className="btn btn-danger text-white fs-3 w-100">Sign In</button>
+            <p className="text-center mt-3 fw-bold">Don't have an account? <Link to="/SignUp" className="text-primary text-decoration-none">Create one</Link> </p>
+          </Form>
+        </div>
+      </main>
     </>
-  )
-}
+  );
+};
 
-export default Signin
+export default Signin;
